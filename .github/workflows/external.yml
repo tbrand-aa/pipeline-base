@@ -15,7 +15,7 @@ jobs:
     - name: Get requested action
       run: echo Action=${{github.event.client_payload.action}}
     - name: Mic rotate auth
-      uses: './.github/actions/mic-rotate-auth'
+      uses: ./.github/actions/mic-rotate-auth
       env:  
         ENVIRONMENT: '${{github.event.client_payload.environment}}'
         CLUSTER: '${{github.event.client_payload.cluster}}'
