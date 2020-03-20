@@ -13,9 +13,10 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: Get requested action
-      run: echo Action=${{github.event.client_payload.action}}
+      run: 'echo "Action: ${{github.event.client_payload.action}}"'
     - name: Mic rotate auth
-      uses: './.github/actions/${{github.event.client_payload.action}}'
+      if: github.event.client_payload.action == 'mic-rotate-auth'
+      uses: ./.github/actions/mic-rotate-auth
       env:  
         ENVIRONMENT: '${{github.event.client_payload.environment}}'
         CLUSTER: '${{github.event.client_payload.cluster}}'
