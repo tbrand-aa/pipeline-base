@@ -22,5 +22,5 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    - name: Hello world action step
+    - name: Mic rotate auth
       uses: ./.github/actions/mic-rotate-auth # Uses an action in the root directory
