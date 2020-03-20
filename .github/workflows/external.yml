@@ -10,9 +10,9 @@ jobs:
 
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    - name: Get the output time
-      run: echo "Running action: ${{ github.event.client_payload.action }}"
+    # - uses: actions/checkout@v2
+    - name: Get requested action
+      run: echo "Running action: ${{github.event.client_payload.action}}"
     - name: Mic rotate auth
       uses: ./.github/actions/'${{github.event.client_payload.action}}'
       env:  
