@@ -1,0 +1,7 @@
+name: 'MIC Authentication Rotate'
+description: 'Triggers the rotate-auth endpoind on the MIC to create new authentication credentials.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - /mic-rotate-auth.sh
