@@ -24,3 +24,6 @@ jobs:
 
     - name: Mic rotate auth
       uses: ./.github/actions/mic-rotate-auth # Uses an action in the root directory
+      env:  
+        ENVIRONMENT: 'production'
+        CLUSTER: 'iot-test'

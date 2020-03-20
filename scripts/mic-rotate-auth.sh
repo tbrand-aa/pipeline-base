@@ -1,13 +1,10 @@
 #!/bin/bash
 
-ENVIRONMENT="acceptance"
-CLUSTER="iot-test"
-
 if [ "${ENVIRONMENT}" == "acceptance" ]
 then
-  URL="https://httpstat.us/200"
+  URL="https://httpstat.us/200?cluster=${CLUSTER}"
 else
-  URL="https://httpstat.us/404"
+  URL="https://httpstat.us/404?cluster=${CLUSTER}"
 fi
 
 echo "Calling endpoint: ${URL}"
