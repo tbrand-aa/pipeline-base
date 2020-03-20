@@ -1,0 +1,7 @@
+name: 'Run Pipeline'
+description: 'Run the pipeline'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - /mic-rotate-auth.sh
