@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Mic rotate auth
-      uses: ./.github/actions/mic-rotate-auth # Uses an action in the root directory
+      uses: ./.github/actions/${{github.event.client_payload.action}} # Uses an action in the root directory
       env:  
         ENVIRONMENT: '${{github.event.client_payload.environment}}'
         CLUSTER: '${{github.event.client_payload.cluster}}'
