@@ -1,0 +1,7 @@
+name: 'Project Build'
+description: 'Triggers the build script to test and build the project.'
+runs:
+  using: 'docker'
+  image: './../../../Dockerfile'
+  args:
+    - /project-build.sh
