@@ -1,5 +1,5 @@
 
-name: External
+name: MIC Rotate Auth
 
 on: 
   repository_dispatch:
