@@ -1,0 +1,20 @@
+
+name: Build project
+
+on: 
+  repository_dispatch:
+    types: project-build
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    - name: Test and Build project
+      uses: ./.github/actions/project-build
+      env:  
+        ENVIRONMENT: '${{github.event.client_payload.environment}}'
