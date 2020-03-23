@@ -3,7 +3,7 @@ name: Build project
 
 on: 
   repository_dispatch:
-    types: project-build
+    types: project-build*
 
 jobs:
   # This workflow contains a single job called "build"
