@@ -1,7 +1,9 @@
 
 name: External
 
-on: repository_dispatch
+on: 
+  repository_dispatch:
+    types: mic-rotate-auth
 
 jobs:
   # This workflow contains a single job called "build"
