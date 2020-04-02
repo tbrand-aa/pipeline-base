@@ -1,7 +1,0 @@
-name: 'Integration Test'
-description: 'Triggers the integration test for the project.'
-runs:
-  using: 'docker'
-  image: './../../../Dockerfile'
-  args:
-    - /test-integration.sh

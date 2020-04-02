@@ -13,5 +13,5 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Checkout pipeline repository
       uses: actions/checkout@v2
-    - name: Docker compose
-      run: docker run --rm -v $PWD:$PWD -v /var/run/docker.sock:/var/run/docker.sock -w $PWD docker/compose -f scripts/docker-compose.yml up --abort-on-container-exit
+    - name: Integration test script
+      run: scripts/test-integration.sh
