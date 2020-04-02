@@ -4,7 +4,7 @@
   "description": "This docker will include the basics for running CI/CD tasks.",
   "main": "index.js",
   "scripts": {
-    "test": "lab -v"
+    "test": "lab -v --timeout 1800000"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/tbrand-aa/pipeline-base#readme",
   "devDependencies": {
     "@hapi/code": "^8.0.1",
-    "@hapi/lab": "^22.0.4"
+    "@hapi/lab": "^22.0.4",
+    "axios": "^0.19.2"
   }
 }
