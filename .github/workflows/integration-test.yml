@@ -7,16 +7,19 @@ on:
 
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  workflow:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    - name: Docker PS
-      run: docker ps -a
-    - name: Run integration test
-      uses: ./.github/actions/test-integration
-      env:  
-        ENVIRONMENT: '${{github.event.client_payload.environment}}'
+    - name: Checkout pipeline repository
+      uses: actions/checkout@v2
+    - name: Build docker
+      run: docker build --tag pipeline
+    - name: Integration Test
+      run: docker run -v /var/run/docker.sock:/var/run/docker.sock pipeline /test-integration.sh
+    # - name: Run integration test
+    #   uses: ./.github/actions/test-integration
+    #   env:  
+    #     ENVIRONMENT: '${{github.event.client_payload.environment}}'
