@@ -13,7 +13,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Checkout pipeline repository
       uses: actions/checkout@v2
-    - name: Update commit status to Pending
+    - name: Update commit status - pending
       run: scripts/update-gh-commit-status.sh
         ${{ github.event.client_payload.repository_name }}
         ${{ github.event.client_payload.repository_sha }}
@@ -34,7 +34,9 @@ jobs:
       env: 
         WORK_REPOSITORY: '${{ github.event.client_payload.repository_name }}'
         WORK_REPOSITORY_SHA: '${{ github.event.client_payload.repository_sha }}'
-    - name: Update commit status to Success
+    
+    - name: Update commit status - success
+      if: success()
       run: scripts/update-gh-commit-status.sh
         ${{ github.event.client_payload.repository_name }}
         ${{ github.event.client_payload.repository_sha }}
@@ -44,3 +46,28 @@ jobs:
         'continuous-integration/github/branch'
       env: 
         PA_TOKEN: '${{ secrets.PA_TOKEN }}'
+    
+    - name: Update commit status - failure
+      if: failure()
+      run: scripts/update-gh-commit-status.sh
+        ${{ github.event.client_payload.repository_name }}
+        ${{ github.event.client_payload.repository_sha }}
+        'failure'
+        'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+        'The build has failed.'
+        'continuous-integration/github/branch'
+      env: 
+        PA_TOKEN: '${{ secrets.PA_TOKEN }}'
+    
+    - name: Update commit status - error
+      if: cancelled()
+      run: scripts/update-gh-commit-status.sh
+        ${{ github.event.client_payload.repository_name }}
+        ${{ github.event.client_payload.repository_sha }}
+        'error'
+        'https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+        'The build was cancelled.'
+        'continuous-integration/github/branch'
+      env: 
+        PA_TOKEN: '${{ secrets.PA_TOKEN }}'
+
