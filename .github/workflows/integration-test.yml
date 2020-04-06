@@ -18,5 +18,6 @@ jobs:
       with:
         repository: tbrand-aa/pipeline-tester
         ref: 'master'
+        path: './work/'
     - name: Integration test script
       run: scripts/test-integration.sh
