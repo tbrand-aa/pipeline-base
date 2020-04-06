@@ -16,8 +16,11 @@ jobs:
     - name: Checkout work repository
       uses: actions/checkout@v2
       with:
-        repository: tbrand-aa/pipeline-tester
-        ref: 'master'
+        repository: '${{ github.event.client_payload.repository_name }}'
+        ref: '${{ github.event.client_payload.repository_sha }}'
         path: './work/'
     - name: Integration test script
       run: scripts/test-integration.sh
+      env: 
+        WORK_REPOSITORY: '${{ github.event.client_payload.repository_name }}'
+        WORK_REPOSITORY_SHA: '${{ github.event.client_payload.repository_sha }}'
