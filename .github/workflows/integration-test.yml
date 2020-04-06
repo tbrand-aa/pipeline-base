@@ -29,4 +29,4 @@ jobs:
       env: 
         WORK_REPOSITORY_NAME: '${{ github.event.client_payload.repository_name }}'
         WORK_REPOSITORY_SHA: '${{ github.event.client_payload.repository_sha }}'
-        PA_TOKEN: '${{ secrets.PA.TOKEN }}'
+        PA_TOKEN: '${{ secrets.PA_TOKEN }}'
