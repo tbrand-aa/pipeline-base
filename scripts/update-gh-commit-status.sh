@@ -1,10 +1,20 @@
 #!/bin/sh
 
 URL="https://api.github.com/repos/${WORK_REPOSITORY_NAME}/statuses/${WORK_REPOSITORY_SHA}"
-echo "Update URL: ${URL}"
+echo "Commit status update URL: ${URL}"
 
-
-STATUS_CODE=$(curl -XPOST -s -o /dev/null -w '%{http_code}' -H "Authorization: token ${PA_TOKEN}" -H 'Accept: application/vnd.github.everest-preview+json' -H 'Content-Type: application/json' ${URL} --data '{"state": "success"}')
+STATUS_CODE=$(
+  curl 
+  -XPOST 
+  -s 
+  -o /dev/null 
+  -w '%{http_code}' 
+  -H "Authorization: token ${PA_TOKEN}" 
+  -H 'Accept: application/vnd.github.everest-preview+json' 
+  -H 'Content-Type: application/json' 
+  ${URL} 
+  --data '{"state": "success"}'
+)
 if [ $STATUS_CODE -eq 201 ]
 then
   echo "  Request succesful!"
