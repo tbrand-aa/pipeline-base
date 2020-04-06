@@ -1,5 +1,12 @@
 #!/bin/sh
 
+WORK_REPOSITORY_NAME=$1
+WORK_REPOSITORY_SHA=$2
+COMMIT_STATUS_STATE=$3
+COMMIT_STATUS_TARGET_URL=$4
+COMMIT_STATUS_DESCRIPTION=$5
+COMMIT_STATUS_CONTEXT=$6
+
 URL="https://api.github.com/repos/${WORK_REPOSITORY_NAME}/statuses/${WORK_REPOSITORY_SHA}"
 echo "Commit status update URL: ${URL}"
 
@@ -13,7 +20,7 @@ STATUS_CODE=$(
   -H 'Accept: application/vnd.github.everest-preview+json' \
   -H 'Content-Type: application/json' \
   ${URL} \
-  --data '{"state": "success"}'
+  --data "{ \"state\": \"${COMMIT_STATUS_STATE}\", \"target_url\": \"${COMMIT_STATUS_TARGET_URL}\", \"description\": \"${COMMIT_STATUS_DESCRIPTION}\", \"context\": \"${COMMIT_STATUS_CONTEXT}\"   }"
 )
 if [ $STATUS_CODE -eq 201 ]
 then

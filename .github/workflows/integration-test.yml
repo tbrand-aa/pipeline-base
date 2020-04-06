@@ -25,8 +25,12 @@ jobs:
     #     WORK_REPOSITORY: '${{ github.event.client_payload.repository_name }}'
     #     WORK_REPOSITORY_SHA: '${{ github.event.client_payload.repository_sha }}'
     - name: Commit status update
-      run: scripts/update-gh-commit-status.sh
+      run: scripts/update-gh-commit-status.sh \
+        ${{ github.event.client_payload.repository_name }} \
+        ${{ github.event.client_payload.repository_sha }} \
+        'pending' \
+        'https://github.com/tbrand-aa/pipeline-base/actions' \
+        'Build finished!!' \
+        'continuous-integration/github/branch'
       env: 
-        WORK_REPOSITORY_NAME: '${{ github.event.client_payload.repository_name }}'
-        WORK_REPOSITORY_SHA: '${{ github.event.client_payload.repository_sha }}'
         PA_TOKEN: '${{ secrets.PA_TOKEN }}'
