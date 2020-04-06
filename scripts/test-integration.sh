@@ -11,7 +11,9 @@ echo "Starting integration test..."
 
 echo "Starting docker-compose configuration"
 docker run --rm -v $PWD/work:$PWD/work -v /var/run/docker.sock:/var/run/docker.sock -w $PWD/work docker/compose -f docker-compose.yml up --abort-on-container-exit --exit-code-from node
+TEST_RESULT=$?
 echo "Removing docker-compose configuration resources"
 docker run --rm -v $PWD/work:$PWD/work -v /var/run/docker.sock:/var/run/docker.sock -w $PWD/work docker/compose -f docker-compose.yml rm -fsv
 
 echo "Integration test finished!"
+exit $TEST_RESULT
