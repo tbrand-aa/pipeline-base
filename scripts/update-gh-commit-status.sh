@@ -5,7 +5,7 @@ echo "Update URL: ${URL}"
 
 
 STATUS_CODE=$(curl -XPOST -s -o /dev/null -w '%{http_code}' -H "Authorization: token ${PA_TOKEN}" -H 'Accept: application/vnd.github.everest-preview+json' -H 'Content-Type: application/json' ${URL} --data '{"state": "success"}')
-if [ $STATUS_CODE -eq 200 ]
+if [ $STATUS_CODE -eq 201 ]
 then
   echo "  Request succesful!"
   exit 0
