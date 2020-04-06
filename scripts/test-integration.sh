@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "Listing all environment variables:"
+printenv
+
 echo "Starting integration test..."
 
 # echo "Currently running containers:"
