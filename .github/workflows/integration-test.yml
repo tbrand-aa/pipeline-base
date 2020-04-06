@@ -19,8 +19,13 @@ jobs:
         repository: '${{ github.event.client_payload.repository_name }}'
         ref: '${{ github.event.client_payload.repository_sha }}'
         path: './work/'
-    - name: Integration test script
-      run: scripts/test-integration.sh
+    # - name: Integration test script
+    #   run: scripts/test-integration.sh
+    #   env: 
+    #     WORK_REPOSITORY: '${{ github.event.client_payload.repository_name }}'
+    #     WORK_REPOSITORY_SHA: '${{ github.event.client_payload.repository_sha }}'
+    - name: Commit status update
+      run: scripts/update-gh-commit-status.sh
       env: 
-        WORK_REPOSITORY: '${{ github.event.client_payload.repository_name }}'
+        WORK_REPOSITORY_NAME: '${{ github.event.client_payload.repository_name }}'
         WORK_REPOSITORY_SHA: '${{ github.event.client_payload.repository_sha }}'
