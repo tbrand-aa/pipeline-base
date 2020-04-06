@@ -1,5 +1,5 @@
 
-name: Build project
+name: Integration Test
 
 on: 
   repository_dispatch:
