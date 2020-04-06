@@ -10,8 +10,8 @@ echo "Starting integration test..."
 # docker inspect $(docker ps -q)
 
 echo "Starting docker-compose configuration"
-docker run --rm -v $PWD/work:$PWD -v /var/run/docker.sock:/var/run/docker.sock -w $PWD docker/compose -f docker-compose.yml up --abort-on-container-exit
+docker run --rm -v $PWD/work:$PWD/work -v /var/run/docker.sock:/var/run/docker.sock -w $PWD/work docker/compose -f docker-compose.yml up --abort-on-container-exit
 echo "Removing docker-compose configuration resources"
-docker run --rm -v $PWD/work:$PWD -v /var/run/docker.sock:/var/run/docker.sock -w $PWD docker/compose -f docker-compose.yml rm -fsv
+docker run --rm -v $PWD/work:$PWD/work -v /var/run/docker.sock:/var/run/docker.sock -w $PWD/work docker/compose -f docker-compose.yml rm -fsv
 
 echo "Integration test finished!"
