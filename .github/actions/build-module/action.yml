@@ -4,5 +4,5 @@ description: 'Triggers the module build pipeline'
 runs:
   using: "composite"
   steps:
-    - run: echo Im triggering the module pipeline now. yeah!
+    - run: echo Im triggering the module pipeline now. yeah! v0.1.1
       shell: bash
