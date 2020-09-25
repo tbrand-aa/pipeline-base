@@ -1,8 +1,20 @@
 name: 'Module build trigger'
 description: 'Triggers the module build pipeline'
 
+inputs:
+  type:
+    description: 'The tag/name of the event'
+    required: true
+  environment:
+    description: 'The target environment'
+    required: true
+
 runs:
   using: "composite"
   steps:
-    - run: echo Im triggering the module pipeline now. yeah! v0.1.1
+    - run: echo Im triggering the module pipeline now. yeah!
+      shell: bash
+    - run: echo type=${{ input.type }}
+      shell: bash
+    - run: echo environment=${{ input.environment }}
       shell: bash
