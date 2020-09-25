@@ -1,0 +1,8 @@
+name: 'Module build trigger'
+description: 'Triggers the module build pipeline'
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo Im triggering the module pipeline now. yeah!
+      shell: bash
