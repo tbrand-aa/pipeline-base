@@ -14,7 +14,7 @@ runs:
   steps:
     - run: echo Im triggering the module pipeline now. yeah!
       shell: bash
-    - run: echo type=${{ input.type }}
+    - run: echo type=${{ inputs.type }}
       shell: bash
-    - run: echo environment=${{ input.environment }}
+    - run: echo environment=${{ inputs.environment }}
       shell: bash
