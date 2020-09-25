@@ -18,3 +18,5 @@ runs:
       shell: bash
     - run: echo environment=${{ inputs.environment }}
       shell: bash
+    - run: echo repository=${{ github.repository }}
+      shell: bash
